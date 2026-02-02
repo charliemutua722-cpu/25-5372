@@ -1,27 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My First Web Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Terminal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hello, World!</h1>
-  <p>This is my first web page.</p>
-  <table>
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-</table>
+    <div id="terminal">
+        <div id="output">
+            <p>Welcome to the System. Type 'help' to see available commands.</p>
+        </div>
+        <div id="input-line">
+            <span class="prompt">user@portfolio:~$</span>
+            <input type="text" id="command-input" autofocus>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
