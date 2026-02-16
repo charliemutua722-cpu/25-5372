@@ -1,129 +1,340 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Computer Table + Lists</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Computer Topics Dashboard</title>
   <style>
-    body{font-family:Arial, sans-serif; margin:20px;}
-    table{width:100%; border-collapse:collapse;}
-    th,td{border:1px solid #ccc; padding:10px; vertical-align:top;}
-    th{background:#f2f2f2; text-align:left;}
-    ul,ol{margin:6px 0 0; padding-left:18px;}
-    h2{margin-top:22px;}
-    blockquote{margin:18px 0; padding:10px 14px; border-left:4px solid #ccc; background:#fafafa;}
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#64748b;
+      --border:#e5e7eb;
+      --brand:#2563eb;
+      --header:#0b1220;
+    }
+
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);}
+
+    /* Top bar */
+    header{
+      background:linear-gradient(135deg, var(--header), #111827);
+      color:#fff;
+      padding:18px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .container{max-width:1100px;margin:0 auto;padding:0 16px;}
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700; letter-spacing:.2px;
+    }
+    .logo{
+      width:34px;height:34px;border-radius:10px;
+      background:linear-gradient(135deg, #60a5fa, #2563eb);
+      display:inline-block;
+      box-shadow:0 8px 22px rgba(37,99,235,.35);
+    }
+    nav a{
+      color:#cbd5e1; text-decoration:none; font-size:13px;
+      padding:8px 10px; border-radius:10px;
+    }
+    nav a:hover{background:rgba(255,255,255,.08); color:#fff;}
+
+    /* Hero */
+    .hero{padding:22px 0 10px;}
+    .hero h1{margin:0;font-size:22px;}
+    .hero p{margin:8px 0 0;color:#dbe7ff;max-width:900px;font-size:13px;line-height:1.5;}
+
+    /* Quote */
+    blockquote{
+      margin:14px 0 0;
+      padding:12px 14px;
+      border-left:4px solid rgba(96,165,250,.9);
+      background:rgba(255,255,255,.06);
+      border-radius:10px;
+      color:#eaf2ff;
+      font-size:13px;
+    }
+    blockquote span{display:block;margin-top:6px;color:#cbd5e1;font-size:12px;}
+
+    /* Page layout */
+    main{padding:18px 0 28px;}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:14px;
+      box-shadow:0 12px 30px rgba(15,23,42,.06);
+      overflow:hidden;
+    }
+    .card-h{
+      padding:14px 16px;
+      border-bottom:1px solid var(--border);
+      display:flex; justify-content:space-between; align-items:flex-start; gap:12px;
+      background:linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+    }
+    .card-h h2{margin:0;font-size:14px;}
+    .card-h p{margin:6px 0 0;color:var(--muted);font-size:13px;line-height:1.45;}
+    .pill{
+      font-size:12px;
+      color:#1d4ed8;
+      background:#eff6ff;
+      border:1px solid #dbeafe;
+      padding:6px 10px;
+      border-radius:999px;
+      white-space:nowrap;
+      margin-top:2px;
+    }
+
+    .card-b{padding:16px;}
+
+    /* Table */
+    .table-wrap{overflow:auto;}
+    table{width:100%;border-collapse:collapse;min-width:820px;}
+    th,td{border:1px solid var(--border);padding:10px;vertical-align:top;font-size:13px;}
+    th{background:#f1f5f9;text-align:left;font-weight:700;}
+    thead th{background:#0f172a;color:#fff;border-color:#111827;}
+    thead th:first-child{border-left-color:#111827;}
+    ul,ol{margin:6px 0 0;padding-left:18px;}
+    li{margin:4px 0;}
+    .note{
+      font-size:12px;color:var(--muted);margin-top:10px;
+      padding-top:10px;border-top:1px dashed var(--border);
+    }
+
+    /* Lists section */
+    .lists{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:12px;
+    }
+    .panel{
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:12px;
+      background:#fff;
+    }
+    .panel h3{margin:0;font-size:13px;}
+    .panel p{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.45;}
+
+    /* Footer */
+    footer{
+      text-align:center;
+      color:var(--muted);
+      font-size:12px;
+      padding:18px 0 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .lists{grid-template-columns:1fr;}
+      nav{display:none;}
+    }
   </style>
 </head>
 
 <body>
-  <h1>Computer Topics </h1>
+  <header>
+    <div class="container">
+      <div class="top">
+        <div class="brand">
+          <span class="logo" aria-hidden="true"></span>
+          <span>CompHub</span>
+        </div>
+        <nav aria-label="Primary navigation">
+          <a href="#overview">Overview</a>
+          <a href="#practice">Practice</a>
+          <a href="#playbook">Playbook</a>
+        </nav>
+      </div>
 
-  <blockquote>
-    “First, solve the problem. Then, write the code.”
-    <br><small>— John Johnson</small>
-  </blockquote>
+      <div class="hero">
+        <h1>Computer Topics Dashboard</h1>
+        <p>
+          A compact, professional reference page for core computer concepts. Scan the matrix to understand “what matters,”
+          then use the lists to practice real workflows: setup, deployment, and incident response.
+        </p>
 
-  <table>
-    <tr>
-      <th>Category</th>
-      <th>Design</th>
-      <th>Build</th>
-      <th>Security</th>
-      <th>Ops</th>
-    </tr>
+        <!-- QUOTATION (requested) -->
+        <blockquote>
+          “Good systems aren’t built by accident — they’re designed, secured, and maintained with discipline.”
+          <span>— Practical engineering mindset</span>
+        </blockquote>
+      </div>
+    </div>
+  </header>
 
-    <tr>
-      <th>Hardware</th>
-      <td><ul><li>CPU vs cores</li><li>RAM capacity</li><li>Storage types</li></ul></td>
-      <td><ul><li>Install parts</li><li>Update BIOS</li><li>Install drivers</li></ul></td>
-      <td><ul><li>Secure Boot</li><li>TPM</li><li>Disk encryption</li></ul></td>
-      <td><ul><li>Clean dust</li><li>Check temps</li><li>SMART health</li></ul></td>
-    </tr>
+  <main>
+    <div class="container">
+      <div class="grid">
 
-    <tr>
-      <th>Networking</th>
-      <td><ul><li>VLAN plan</li><li>Wi-Fi coverage</li><li>Backup link</li></ul></td>
-      <td><ul><li>IP scheme</li><li>DNS/DHCP</li><li>QoS rules</li></ul></td>
-      <td><ul><li>Firewall rules</li><li>WPA3</li><li>VPN access</li></ul></td>
-      <td><ul><li>Ping checks</li><li>Bandwidth watch</li><li>Alerts</li></ul></td>
-    </tr>
+        <!-- TABLE CARD -->
+        <section class="card" id="overview">
+          <div class="card-h">
+            <div>
+              <h2>5×5 Systems Matrix</h2>
+              <p>Each cell contains a short list of subtopics so you can review quickly and consistently.</p>
+            </div>
+            <div class="pill">Reference</div>
+          </div>
 
-    <tr>
-      <th>Software</th>
-      <td><ul><li>Modules</li><li>APIs</li><li>Data model</li></ul></td>
-      <td><ul><li>Git</li><li>Tests</li><li>CI</li></ul></td>
-      <td><ul><li>Validation</li><li>Secrets</li><li>Deps scan</li></ul></td>
-      <td><ul><li>Versioning</li><li>Rollback</li><li>Bug triage</li></ul></td>
-    </tr>
+          <div class="card-b">
+            <div class="table-wrap">
+              <table aria-label="Computer systems 5 by 5 table">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Design</th>
+                    <th>Build</th>
+                    <th>Security</th>
+                    <th>Ops</th>
+                  </tr>
+                </thead>
 
-    <tr>
-      <th>Data</th>
-      <td><ul><li>Retention</li><li>Quality rules</li><li>Ownership</li></ul></td>
-      <td><ul><li>SQL/NoSQL</li><li>Indexing</li><li>Backups</li></ul></td>
-      <td><ul><li>Encrypt</li><li>RBAC</li><li>Audit logs</li></ul></td>
-      <td><ul><li>Restore drills</li><li>Replication</li><li>Capacity</li></ul></td>
-    </tr>
+                <tbody>
+                  <tr>
+                    <th>Hardware</th>
+                    <td><ul><li>CPU vs cores</li><li>RAM capacity</li><li>Storage types</li></ul></td>
+                    <td><ul><li>Install parts</li><li>Update BIOS</li><li>Install drivers</li></ul></td>
+                    <td><ul><li>Secure Boot</li><li>TPM</li><li>Disk encryption</li></ul></td>
+                    <td><ul><li>Clean dust</li><li>Check temps</li><li>SMART health</li></ul></td>
+                  </tr>
 
-    <tr>
-      <th>Cloud/DevOps</th>
-      <td><ul><li>VM vs containers</li><li>Cost design</li><li>Scaling</li></ul></td>
-      <td><ul><li>IaC</li><li>CI/CD</li><li>Automation</li></ul></td>
-      <td><ul><li>IAM least privilege</li><li>WAF</li><li>Rotate secrets</li></ul></td>
-      <td><ul><li>Logs</li><li>Metrics</li><li>Incidents</li></ul></td>
-    </tr>
-  </table>
+                  <tr>
+                    <th>Networking</th>
+                    <td><ul><li>VLAN plan</li><li>Wi-Fi coverage</li><li>Backup link</li></ul></td>
+                    <td><ul><li>IP scheme</li><li>DNS/DHCP</li><li>QoS rules</li></ul></td>
+                    <td><ul><li>Firewall rules</li><li>WPA3</li><li>VPN access</li></ul></td>
+                    <td><ul><li>Ping checks</li><li>Bandwidth watch</li><li>Alerts</li></ul></td>
+                  </tr>
 
-  <h2>Lists</h2>
+                  <tr>
+                    <th>Software</th>
+                    <td><ul><li>Modules</li><li>APIs</li><li>Data model</li></ul></td>
+                    <td><ul><li>Git</li><li>Tests</li><li>CI</li></ul></td>
+                    <td><ul><li>Validation</li><li>Secrets</li><li>Deps scan</li></ul></td>
+                    <td><ul><li>Versioning</li><li>Rollback</li><li>Bug triage</li></ul></td>
+                  </tr>
 
-  <h3>Unordered list (checklist)</h3>
-  <ul>
-    <li>Updates
-      <ul><li>OS patches</li><li>Driver updates</li></ul>
-    </li>
-    <li>Security
-      <ul><li>Firewall on</li><li>Strong passwords</li></ul>
-    </li>
-    <li>Health
-      <ul><li>Temps normal</li><li>Disk OK</li></ul>
-    </li>
-  </ul>
+                  <tr>
+                    <th>Data</th>
+                    <td><ul><li>Retention</li><li>Quality rules</li><li>Ownership</li></ul></td>
+                    <td><ul><li>SQL/NoSQL</li><li>Indexing</li><li>Backups</li></ul></td>
+                    <td><ul><li>Encrypt</li><li>RBAC</li><li>Audit logs</li></ul></td>
+                    <td><ul><li>Restore drills</li><li>Replication</li><li>Capacity</li></ul></td>
+                  </tr>
 
-  <h3>Ordered list (steps)</h3>
-  <ol>
-    <li>Build
-      <ul><li>Install dependencies</li><li>Run tests</li></ul>
-    </li>
-    <li>Deploy
-      <ul><li>Upload build</li><li>Start service</li></ul>
-    </li>
-    <li>Verify
-      <ul><li>Health check</li><li>Monitor logs</li></ul>
-    </li>
-  </ol>
+                  <tr>
+                    <th>Cloud/DevOps</th>
+                    <td><ul><li>VM vs containers</li><li>Cost design</li><li>Scaling</li></ul></td>
+                    <td><ul><li>IaC</li><li>CI/CD</li><li>Automation</li></ul></td>
+                    <td><ul><li>Least privilege IAM</li><li>WAF</li><li>Rotate secrets</li></ul></td>
+                    <td><ul><li>Logs</li><li>Metrics</li><li>Incidents</li></ul></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-  <h3>Nested list (playbook)</h3>
-  <ol>
-    <li>Detect
-      <ul>
-        <li>Confirm issue
-          <ul><li>What’s broken?</li><li>Who is affected?</li></ul>
-        </li>
-        <li>Assign owner</li>
-      </ul>
-    </li>
-    <li>Fix
-      <ul>
-        <li>Quick action
-          <ul><li>Rollback</li><li>Restart service</li></ul>
-        </li>
-        <li>Security checks
-          <ul><li>Rotate secrets</li><li>Block IPs</li></ul>
-        </li>
-      </ul>
-    </li>
-    <li>Review
-      <ul><li>Root cause</li><li>Action items</li></ul>
-    </li>
-  </ol>
+            <div class="note">
+              Tip: If you’re studying, pick one row per day and explain each column in your own words (Design → Ops).
+            </div>
+          </div>
+        </section>
+
+        <!-- LISTS CARD -->
+        <section class="card" id="practice">
+          <div class="card-h">
+            <div>
+              <h2>Practice Lists</h2>
+              <p>Unordered, ordered, and nested lists — each item includes sub-items to keep the same structured principle.</p>
+            </div>
+            <div class="pill">Workflows</div>
+          </div>
+
+          <div class="card-b">
+            <div class="lists">
+
+              <div class="panel">
+                <h3>Unordered (Checklist)</h3>
+                <p>Daily PC sanity checks.</p>
+                <ul>
+                  <li>Updates
+                    <ul><li>OS patches</li><li>Driver updates</li></ul>
+                  </li>
+                  <li>Security
+                    <ul><li>Firewall on</li><li>Strong passwords</li></ul>
+                  </li>
+                  <li>Health
+                    <ul><li>Temps normal</li><li>Disk OK</li></ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="panel">
+                <h3>Ordered (Steps)</h3>
+                <p>Basic web app release flow.</p>
+                <ol>
+                  <li>Build
+                    <ul><li>Install dependencies</li><li>Run tests</li></ul>
+                  </li>
+                  <li>Deploy
+                    <ul><li>Upload build</li><li>Start service</li></ul>
+                  </li>
+                  <li>Verify
+                    <ul><li>Health check</li><li>Monitor logs</li></ul>
+                  </li>
+                </ol>
+              </div>
+
+              <div class="panel" id="playbook">
+                <h3>Nested (Playbook)</h3>
+                <p>Incident response in layered detail.</p>
+                <ol>
+                  <li>Detect
+                    <ul>
+                      <li>Confirm issue
+                        <ul><li>What’s broken?</li><li>Who is affected?</li></ul>
+                      </li>
+                      <li>Assign owner</li>
+                    </ul>
+                  </li>
+                  <li>Fix
+                    <ul>
+                      <li>Quick action
+                        <ul><li>Rollback</li><li>Restart service</li></ul>
+                      </li>
+                      <li>Security checks
+                        <ul><li>Rotate secrets</li><li>Block IPs</li></ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>Review
+                    <ul><li>Root cause</li><li>Action items</li></ul>
+                  </li>
+                </ol>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <footer>© 2026 CompHub • Simple, professional to suite your needs.</footer>
+    </div>
+  </main>
 </body>
 </html>
-
