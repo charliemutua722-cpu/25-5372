@@ -1,21 +1,128 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Terminal Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <title>Simple 5x5 Computer Table + Lists</title>
+  <style>
+    body{font-family:Arial, sans-serif; margin:20px;}
+    table{width:100%; border-collapse:collapse;}
+    th,td{border:1px solid #ccc; padding:10px; vertical-align:top;}
+    th{background:#f2f2f2; text-align:left;}
+    ul,ol{margin:6px 0 0; padding-left:18px;}
+    h2{margin-top:22px;}
+    blockquote{margin:18px 0; padding:10px 14px; border-left:4px solid #ccc; background:#fafafa;}
+  </style>
 </head>
+
 <body>
-    <div id="terminal">
-        <div id="output">
-            <p>Welcome to the System. Type 'help' to see available commands.</p>
-        </div>
-        <div id="input-line">
-            <span class="prompt">user@portfolio:~$</span>
-            <input type="text" id="command-input" autofocus>
-        </div>
-    </div>
-    <script src="script.js"></script>
+  <h1>Computer Topics (5×5)</h1>
+
+  <blockquote>
+    “First, solve the problem. Then, write the code.”
+    <br><small>— John Johnson</small>
+  </blockquote>
+
+  <table>
+    <tr>
+      <th>Category</th>
+      <th>Design</th>
+      <th>Build</th>
+      <th>Security</th>
+      <th>Ops</th>
+    </tr>
+
+    <tr>
+      <th>Hardware</th>
+      <td><ul><li>CPU vs cores</li><li>RAM capacity</li><li>Storage types</li></ul></td>
+      <td><ul><li>Install parts</li><li>Update BIOS</li><li>Install drivers</li></ul></td>
+      <td><ul><li>Secure Boot</li><li>TPM</li><li>Disk encryption</li></ul></td>
+      <td><ul><li>Clean dust</li><li>Check temps</li><li>SMART health</li></ul></td>
+    </tr>
+
+    <tr>
+      <th>Networking</th>
+      <td><ul><li>VLAN plan</li><li>Wi-Fi coverage</li><li>Backup link</li></ul></td>
+      <td><ul><li>IP scheme</li><li>DNS/DHCP</li><li>QoS rules</li></ul></td>
+      <td><ul><li>Firewall rules</li><li>WPA3</li><li>VPN access</li></ul></td>
+      <td><ul><li>Ping checks</li><li>Bandwidth watch</li><li>Alerts</li></ul></td>
+    </tr>
+
+    <tr>
+      <th>Software</th>
+      <td><ul><li>Modules</li><li>APIs</li><li>Data model</li></ul></td>
+      <td><ul><li>Git</li><li>Tests</li><li>CI</li></ul></td>
+      <td><ul><li>Validation</li><li>Secrets</li><li>Deps scan</li></ul></td>
+      <td><ul><li>Versioning</li><li>Rollback</li><li>Bug triage</li></ul></td>
+    </tr>
+
+    <tr>
+      <th>Data</th>
+      <td><ul><li>Retention</li><li>Quality rules</li><li>Ownership</li></ul></td>
+      <td><ul><li>SQL/NoSQL</li><li>Indexing</li><li>Backups</li></ul></td>
+      <td><ul><li>Encrypt</li><li>RBAC</li><li>Audit logs</li></ul></td>
+      <td><ul><li>Restore drills</li><li>Replication</li><li>Capacity</li></ul></td>
+    </tr>
+
+    <tr>
+      <th>Cloud/DevOps</th>
+      <td><ul><li>VM vs containers</li><li>Cost design</li><li>Scaling</li></ul></td>
+      <td><ul><li>IaC</li><li>CI/CD</li><li>Automation</li></ul></td>
+      <td><ul><li>IAM least privilege</li><li>WAF</li><li>Rotate secrets</li></ul></td>
+      <td><ul><li>Logs</li><li>Metrics</li><li>Incidents</li></ul></td>
+    </tr>
+  </table>
+
+  <h2>Lists</h2>
+
+  <h3>Unordered list (checklist)</h3>
+  <ul>
+    <li>Updates
+      <ul><li>OS patches</li><li>Driver updates</li></ul>
+    </li>
+    <li>Security
+      <ul><li>Firewall on</li><li>Strong passwords</li></ul>
+    </li>
+    <li>Health
+      <ul><li>Temps normal</li><li>Disk OK</li></ul>
+    </li>
+  </ul>
+
+  <h3>Ordered list (steps)</h3>
+  <ol>
+    <li>Build
+      <ul><li>Install dependencies</li><li>Run tests</li></ul>
+    </li>
+    <li>Deploy
+      <ul><li>Upload build</li><li>Start service</li></ul>
+    </li>
+    <li>Verify
+      <ul><li>Health check</li><li>Monitor logs</li></ul>
+    </li>
+  </ol>
+
+  <h3>Nested list (playbook)</h3>
+  <ol>
+    <li>Detect
+      <ul>
+        <li>Confirm issue
+          <ul><li>What’s broken?</li><li>Who is affected?</li></ul>
+        </li>
+        <li>Assign owner</li>
+      </ul>
+    </li>
+    <li>Fix
+      <ul>
+        <li>Quick action
+          <ul><li>Rollback</li><li>Restart service</li></ul>
+        </li>
+        <li>Security checks
+          <ul><li>Rotate secrets</li><li>Block IPs</li></ul>
+        </li>
+      </ul>
+    </li>
+    <li>Review
+      <ul><li>Root cause</li><li>Action items</li></ul>
+    </li>
+  </ol>
 </body>
 </html>
