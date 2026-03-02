@@ -1,15 +1,13 @@
-/ Paragraph 3 - external (Purple, Underline) /
 .p3{
   color: purple;
   text-decoration: underline;
 }
 
-/ Highlight 3 - external (Color) /
 .highlight3{
   color: blue;
 }
 
-/ Building 3 - external (Color) /
 .building3{
   color: purple;
 }
+
