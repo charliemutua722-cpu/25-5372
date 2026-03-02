@@ -1,14 +1,28 @@
-
+/* Paragraph 3 - external (Purple, Underline) */
 .p3{
   color: purple;
   text-decoration: underline;
 }
 
+/* Highlight 3 - external */
 .highlight3{
   color: blue;
 }
 
-
+/* Building 3 - external */
 .building3{
   color: purple;
+}
+
+/* NEW h2 - external (Orange, Bold, Underline) */
+.externalH2{
+  color: orange;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* NEW h4 - external (Purple, Italics) */
+.externalH4{
+  color: purple;
+  font-style: italic;
 }
