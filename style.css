@@ -1,41 +1,15 @@
-body {
-    background-color: #0c0c0c;
-    color: #00ff00; /* Classic Matrix/Terminal Green */
-    font-family: 'Courier New', Courier, monospace;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+/ Paragraph 3 - external (Purple, Underline) /
+.p3{
+  color: purple;
+  text-decoration: underline;
 }
 
-#terminal {
-    width: 80%;
-    max-width: 900px;
-    height: 60vh;
-    background-color: #1a1a1a;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
-    overflow-y: auto;
+/ Highlight 3 - external (Color) /
+.highlight3{
+  color: blue;
 }
 
-#input-line {
-    display: flex;
-    margin-top: 10px;
-}
-
-.prompt {
-    margin-right: 10px;
-    color: #ff00ff; /* Pink/Purple prompt for contrast */
-}
-
-input {
-    background: transparent;
-    border: none;
-    color: #00ff00;
-    font-family: inherit;
-    font-size: 1rem;
-    outline: none;
-    flex-grow: 1;
+/ Building 3 - external (Color) /
+.building3{
+  color: purple;
 }
